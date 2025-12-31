@@ -28,7 +28,7 @@ def generate_insight(db: Session = Depends(get_db)):
     Provide a brief, encouraging insight about their productivity and wellness patterns.
     """
     
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-3-flash-preview')
     response = model.generate_content(prompt)
     
     new_insight = Insight(content = response.text, insight_type="productiviity")
