@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-from routers import tasks, wellness, analytics, insights
+from routers import tasks, wellness, analytics, insights, ai_insights
 
 #app and databse creation
 app = FastAPI(title= "Productivity AI API")
@@ -25,3 +25,4 @@ app.include_router(tasks.router)
 app.include_router(wellness.router)
 app.include_router(analytics.router)
 app.include_router(insights.router)
+app.include_router(ai_insights.router)
