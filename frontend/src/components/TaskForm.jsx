@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-function TaskForm() {
+function TaskForm({ onTaskCreated }) {
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
 
@@ -14,6 +14,7 @@ function TaskForm() {
         .then(() => {
             setTitle('')
             setCategory('')
+            onTaskCreated()
             alert('Task created!')
         })
     }
