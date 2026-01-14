@@ -1,28 +1,22 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import TasksPage from './pages/TasksPage'
+import WellnessPage from './pages/WellnessPage'
+import InsightsPage from './pages/InsightsPage'
 import './App.css'
-import TaskList from './components/TaskList'
-import TaskForm from './components/TaskForm'
 
 function App() {
-  const [tasks, setTasks] = useState([])
-
-  const fetchTasks = () => {
-    axios.get('http://localhost:8000/tasks')
-      .then(response => setTasks(response.data))
-  }
-
-  useEffect(() => {
-    fetchTasks()
-  }, [])
-
   return (
-    <div>
-      <h1>Productivity AI</h1>
-      <TaskForm onTaskCreated={fetchTasks}/>
-      <TaskList tasks={tasks} onTaskCompleted={fetchTasks}/>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/wellness" element={<WellnessPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
-
 export default App

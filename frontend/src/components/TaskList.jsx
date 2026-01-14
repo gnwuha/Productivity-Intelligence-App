@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function TaskList({ tasks, onTaskCompleted }) {
   const handleComplete = (taskId) => {
-    axios.put("http://localhost:8000/tasks/${taskID}/complete")
+    axios.put(`http://localhost:8000/tasks/${taskId}/complete`)
       .then(() => {
         onTaskCompleted()
       })
